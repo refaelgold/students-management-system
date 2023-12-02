@@ -15,8 +15,3 @@ welcomeUser.innerHTML  =  teacherName+" Dashboard";
 logOutBtn.addEventListener("click", function () {
   window.location.href = "index.html";
 });
-
-
-
-// Present students by teacher ID
-console.log(localStorage.getItem("students"));

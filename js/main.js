@@ -2,21 +2,10 @@ let loginBtn = document.getElementById("loginBtn");
 let signupAnchor = document.getElementById("signupAnchor");
 
 
-
-// A list of teachers
-let constant_teachers = [
-  {
-    "ID": "038152337",
-    "name": "Ofir Levi",
-  },
-  {
-    "ID": "038152336",
-    "name": "Nir Goldman",
-  }
-];
+let teachers = [];
 
 
-allTeachers = constant_teachers.concat(JSON.parse(localStorage.getItem("teachers")));
+allTeachers = teachers.concat(JSON.parse(localStorage.getItem("teachers")));
 if (localStorage.getItem("teachers") != null) {
   teachers = allTeachers ;
 }

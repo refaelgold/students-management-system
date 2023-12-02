@@ -7,9 +7,19 @@ let signupPhoneInput = document.getElementById("signupPhone");
 
 let students = [];
 
+
+// Check if students its empty
 if (localStorage.getItem("students") != null) {
     teachers = JSON.parse(localStorage.getItem("students"));
 }
+
+
+// Concat new student to list of student
+allStudents = students.concat(JSON.parse(localStorage.getItem("students")));
+if (localStorage.getItem("students") != null) {
+    students = allStudents ;
+}
+
 
 function signUp() {
     let student = {
@@ -55,12 +65,32 @@ function isNewPhone(phone) {
     return true;
 }
 
+// Concat new student to list of student
+allStudents = students.concat(JSON.parse(localStorage.getItem("students")));
+if (localStorage.getItem("students") != null) {
+    students = allStudents ;
+}
 
+if (document.getElementById('studentTable')){
+    // Add titles to students table
+    document.getElementById('studentTable').innerHTML +=
 
-// https://stackoverflow.com/questions/69079856/replace-a-variable-in-json-object
-// function studentsList(){
-//
-// }
+        '  <thead class="thead-dark"><tr>' +
+        '       <td>Name</td>\n' +
+        '       <td>class</td>\n' +
+        '       <td>phone</td>\n' +
+        '    </tr></thead>';
+
+    Object.keys(teachers).forEach(function(key) {
+        if (teachers[key]['teacherID'].includes(signupTeacherIDInput.value)) {
+            document.getElementById('studentTable').innerHTML +=  '<tr>\n' +
+                '       <td>'+teachers[key]['name']+'</td>\n' +
+                '       <td>'+teachers[key]['class']+'</td>\n' +
+                '       <td>'+teachers[key]['phone']+'</td>\n' +
+                '    </tr>';
+        }
+    });
+}
 
 
 function clearForm() {
@@ -70,7 +100,9 @@ function clearForm() {
 }
 
 
-signupBtn.addEventListener("click", function () {
-    signUp();
-});
+if (signupBtn){
+    signupBtn.addEventListener("click", function () {
+        signUp();
+    });
+}
 
